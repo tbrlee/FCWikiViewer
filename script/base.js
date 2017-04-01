@@ -31,6 +31,7 @@ $(function() {
     */
     $('#search-btn').click(function() {
         var searchFound = $('#query').val(); //Get search articles from search bar
+        var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+searchFound+"&format=json&callback=?"; 
 
     });
 });
