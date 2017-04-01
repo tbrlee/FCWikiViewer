@@ -3,6 +3,7 @@ $(function() {
     var searchField = $('#query');
     var icon = $('#search-btn');
     
+   
     //focus event handler
     searchField.on('focus', function() {
         $(this).animate({
@@ -24,14 +25,29 @@ $(function() {
             },400, function() {});
         }
     });
-    /*
+    
+ /*
     $('#search-form').submit(function(e) {
         e.preventDefault();    
     });
-    */
+   */
     $('#search-btn').click(function() {
         var searchFound = $('#query').val(); //Get search articles from search bar
         var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+searchFound+"&format=json&callback=?"; 
 
+        $.ajax({
+            type:"GET",
+            url:url,
+            asynch:false,
+            dataType: "json",
+            success: function(data){
+                console.log(url);
+            },
+            error: function(errorMessage) {
+                alert("Error");
+            }
+
+        });    
+    
     });
 });
